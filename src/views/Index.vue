@@ -1,6 +1,6 @@
 <template>
-  <div>
-    ddd
+  <div id="index-container">
+    <div class="box">1111</div>
   </div>
 </template>
 <script lang="ts">
@@ -11,4 +11,5 @@ export default defineComponent({
 })
 </script>
 <style lang="sass" scoped>
+@import url('./index.scss')
 </style>
