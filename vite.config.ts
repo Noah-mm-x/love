@@ -8,15 +8,20 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
+      'vue': 'vue/dist/vue.esm-bundler.js',
       "@": path.resolve(__dirname, "./src"),
     }
   },
+  server: {
+    host: '0.0.0.0'
+  },
+
   css: {
-    preprocessorOptions: {
-      sass: {
-        javascriptEnabled: true
-      }
-    },
+    // preprocessorOptions: {
+    //   sass: {
+    //     javascriptEnabled: true
+    //   }
+    // },
     postcss: { // ⚠️关键代码
       plugins: [
         postCssPxToRem({ // 自适应，px>rem转换

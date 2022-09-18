@@ -1,9 +1,23 @@
 <template>
   <div id="index-container">
-    <vue-typed :strings="['World', 'John']"
-               @onComplete="onTypingComplete">
-      <h1>Hello <span class="typing"></span></h1>
-    </vue-typed>
+    <!-- <vue-typed :strings="['在一起的一百天你了']"
+               :typeSpeed="300"
+               :fadeOut="true">
+    </vue-typed> -->
+    <!-- 页面一 -->
+    <div class="page-container page1-container">
+      <div class="title">送你的一封信</div>
+      <div class="envelope-wrap">
+        <img class="envelope"
+             src="@/assets/img/envelope.png"
+             alt="">
+        <img class="heart animate__animated  animate__heartBeat animate__infinite"
+             src="@/assets/img/heart.png"
+             alt="">
+      </div>
+      <a class="start"
+         href="javascript:;">开启</a>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -11,6 +25,9 @@ import { defineComponent, Ref, ref } from 'vue'
 import { VueTyped, TypedRef } from 'vue3-typed.js'
 export default defineComponent({
   name: '',
+  components: {
+    VueTyped,
+  },
   setup: () => {
     // const originTxt: Ref<string> = ref('你在哪里呢我又在哪呢')
     // const resultTxt: Ref<string> = ref('')
@@ -26,16 +43,11 @@ export default defineComponent({
     //   console.log(txtArr)
     // }
     // fontAni(originTxt.value)
-    const onTypingComplete = (ref: TypedRef) => {
-      ref.value // Typed.js
-      console.log('typing complete')
-    }
-    return {
-      onTypingComplete,
-    }
+
+    return {}
   },
 })
 </script>
-<style lang="sass" scoped>
-@import url('./index.scss')
-</style>
+<style lang="less">
+@import url('./index.less');
+</style>  
