@@ -1,4 +1,10 @@
-@a: 100px;
+@color1: rgb(249, 113, 103);
+@color2: rgb(153, 215, 217);
+@color3: rgb(248, 220, 159);
+@color4: rgb(250, 187, 124);
+@color5: rgb(151, 208, 99);
+@color6: rgb(117, 194, 194);
+@colorFont: #333;
 
 .page-container {
   width: 100%;
@@ -11,7 +17,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(249, 113, 103);
+  background-color: @color1;
+  // color: rgb(17, 150, 174);
+  color: @colorFont;
 
   .title {
     font-size: 24px;
@@ -47,4 +55,58 @@
     border-radius: 12px;
   }
 
+}
+
+.page2-container {
+  padding-top: 40px;
+  background-color: @color2;
+
+  .title {
+
+    p {
+      font-size: 24px;
+      color: @colorFont;
+      text-align: center;
+      line-height: 48px;
+
+      span {
+        font-size: 30px;
+        color: rgb(221, 22, 22);
+      }
+    }
+  }
+
+  .con {
+    margin-top: 30px;
+
+    p {
+      font-size: 24px;
+      color: @colorFont;
+      text-align: center;
+      line-height: 48px;
+
+      span {
+        font-size: 30px;
+        color: rgb(221, 22, 22);
+      }
+    }
+
+    img {
+      margin: 10px auto 0;
+      display: block;
+      width: 320px;
+    }
+  }
+
+  .start {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 24px;
+    border: 3px solid rgb(226, 149, 155);
+    padding: 10px 20px;
+    border-radius: 12px;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+  }
 }
