@@ -17,54 +17,149 @@
              alt="">
       </div>
       <a class="start"
-         href="javascript:;">开启</a>
+         href="javascript:;"
+         @click="handleJump(2)">开启</a>
     </div>
     <!-- 页面二 -->
-    <div v-if="page === 2"
-         class="page-container page2-container">
-      <div class="title">
-        <p>我们已经相识</p>
-        <p><span>3 </span>个月了！</p>
+    <transition name="fade">
+      <div v-if="page === 2"
+           class="page-container page2-container">
+        <div class="title">
+          <p>我们已经相识</p>
+          <p><span>3 </span>个月了！</p>
+        </div>
+        <div class="con">
+          <p>第一天聊天，仿佛昨日</p>
+          <p>
+            <span>7</span>月<span>24</span>日
+          </p>
+          <img src="../assets/img/one.jpeg"
+               alt="">
+        </div>
+        <a class="start"
+           href="javascript:;">开心</a>
       </div>
-      <div class="con">
-        <p>第一天聊天，仿佛昨日</p>
-        <p>
-          <span>7</span>月<span>24</span>日
-        </p>
-        <img src="../assets/img/one.jpeg"
-             alt="">
-      </div>
+    </transition>
+    <!-- 页面三 -->
+    <!-- '我们之间有太多太多的相似' -->
+    <div v-if="page === 3"
+         class="page-container page3-container">
+      <vue-typed class="font"
+                 :showCursor="typeOpt.showCursor"
+                 :strings="[typeOpt.page3Txt]"
+                 :typeSpeed="typeOpt.typeSpeed"
+                 :fadeOut="typeOpt.fadeOut"
+                 :onComplete="handleTypeComplete">
+      </vue-typed>
       <a class="start"
-         href="javascript:;">开开心心</a>
+         href="javascript:;">好梦</a>
+    </div>
+    <div v-if="page === 4"
+         class="page-container page4-container">
+      <vue-typed class="font"
+                 :showCursor="typeOpt.showCursor"
+                 :strings="[typeOpt.page4Txt]"
+                 :typeSpeed="typeOpt.typeSpeed"
+                 :fadeOut="typeOpt.fadeOut"
+                 :onComplete="handleTypeComplete">
+      </vue-typed>
+      <swiper class="img-wrap">
+        <swiper-slide v-for="(item,index) in page4List"
+                      :key="index">
+          <img class="img-item"
+               :src="item"
+               alt="ta" />
+        </swiper-slide>
+      </swiper>
+      <a class="start"
+         href="javascript:;">好梦</a>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, Ref, ref } from 'vue'
+import { defineComponent, Ref, ref, Reactive, reactive } from 'vue'
 import { VueTyped, TypedRef } from 'vue3-typed.js'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import ta1 from '../assets/img/ta/1.jpg'
+import ta2 from '../assets/img/ta/2.jpg'
+import ta3 from '../assets/img/ta/3.jpg'
+import ta4 from '../assets/img/ta/4.jpg'
+import ta5 from '../assets/img/ta/5.jpg'
+import ta6 from '../assets/img/ta/6.jpg'
+import ta7 from '../assets/img/ta/7.jpg'
+import ta8 from '../assets/img/ta/8.jpg'
+import ta9 from '../assets/img/ta/9.jpg'
 export default defineComponent({
   name: '',
   components: {
     VueTyped,
+    Swiper,
+    SwiperSlide,
   },
   setup: () => {
-    // const originTxt: Ref<string> = ref('你在哪里呢我又在哪呢')
-    // const resultTxt: Ref<string> = ref('')
-    // const fontAni = (txt: string) => {
-    //   const txtArr: string[] = []
-    //   for (let i = 0; i < txt.length; i++) {
-    //     txtArr.push(txt[i])
-    //     setTimeout(() => {
-    //       resultTxt.value += txt[i]
-    //       console.log('1111', resultTxt.value)
-    //     }, 10000)
-    //   }
-    //   console.log(txtArr)
-    // }
-    // fontAni(originTxt.value)
-    const page: Ref<Number> = ref(2)
+    const page: Ref<Number> = ref(3)
+
+    const page3Txt: Ref<String> = ref(
+      `
+      <div>我们之间有太多太多的相似</div>
+      <div>都喜欢，旅行，自驾，看书，猫狗，大海。。。</div>
+      <div>最重要的是</div>
+      <div>我们的牙齿都一样！</div>
+      <div>               </div>
+      <div>本来我觉得，我这可能会去将就了。</div>
+      <div>但是 遇到了你</div>
+      <div>你，就像一道耀眼的流星，坠入我的生命里，给我带来光亮和快乐。</div>
+      <div>咱俩的相遇，我一直觉得是一场梦</div>
+      <div>一切都太过美好了</div>
+      <div>如果真的是一场梦</div>
+      <div>我希望</div>
+      <div>永远不要醒来~</div>
+      `
+    )
+    // const page3Txt: Ref<String> = ref(
+    //   `
+    //   1111
+    //   `
+    // )
+    const page4Txt: Ref<String> = ref(
+      `
+      <div>我喜欢用照片记录生活~</div>
+      <div>更喜欢记录和你</div>
+      <div>每一次见面的点点滴滴</div>
+      `
+    )
+    const typeOpt: Reactive<Object> = reactive({
+      showCursor: false,
+      typeSpeed: 200,
+      page3Txt: page3Txt.value,
+      page4Txt: page4Txt.value,
+      fadeOut: true,
+    })
+    const handleTypeComplete: Function = () => {
+      console.log(111)
+    }
+    const handleJump: Function = (pageParam: Number) => {
+      console.log(page)
+      page.value = pageParam
+    }
+    const page4List: Reactive<Array<String>> = reactive([
+      ta1,
+      ta2,
+      ta3,
+      ta4,
+      ta5,
+      ta6,
+      ta7,
+      ta8,
+      ta9,
+    ])
     return {
       page,
+      typeOpt,
+      handleJump,
+      handleTypeComplete,
+      page4List,
     }
   },
 })
