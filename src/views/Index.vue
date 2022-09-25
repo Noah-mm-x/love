@@ -63,7 +63,12 @@
                  :fadeOut="typeOpt.fadeOut"
                  :onComplete="handleTypeComplete">
       </vue-typed>
-      <swiper class="img-wrap">
+      <swiper class="img-wrap"
+              :modules="modules"
+              :speed="page4SwiperOpt.speed"
+              :autoplay="{
+                delay: page4SwiperOpt.delay
+              }">
         <swiper-slide v-for="(item,index) in page4List"
                       :key="index">
           <img class="img-item"
@@ -79,8 +84,10 @@
 <script lang="ts">
 import { defineComponent, Ref, ref, Reactive, reactive } from 'vue'
 import { VueTyped, TypedRef } from 'vue3-typed.js'
+import { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
+import 'swiper/css/autoplay'
 import ta1 from '../assets/img/ta/1.jpg'
 import ta2 from '../assets/img/ta/2.jpg'
 import ta3 from '../assets/img/ta/3.jpg'
@@ -98,7 +105,7 @@ export default defineComponent({
     SwiperSlide,
   },
   setup: () => {
-    const page: Ref<Number> = ref(3)
+    const page: Ref<Number> = ref(4)
 
     const page3Txt: Ref<String> = ref(
       `
@@ -106,8 +113,8 @@ export default defineComponent({
       <div>都喜欢，旅行，自驾，看书，猫狗，大海。。。</div>
       <div>最重要的是</div>
       <div>我们的牙齿都一样！</div>
-      <div>               </div>
-      <div>本来我觉得，我这可能会去将就了。</div>
+      <div>一切仿佛上天注定一般</div>
+      <div>我的日常，其实很黑暗。</div>
       <div>但是 遇到了你</div>
       <div>你，就像一道耀眼的流星，坠入我的生命里，给我带来光亮和快乐。</div>
       <div>咱俩的相遇，我一直觉得是一场梦</div>
@@ -125,8 +132,8 @@ export default defineComponent({
     const page4Txt: Ref<String> = ref(
       `
       <div>我喜欢用照片记录生活~</div>
-      <div>更喜欢记录和你</div>
-      <div>每一次见面的点点滴滴</div>
+      <div>更喜欢记录</div>
+      <div>和你的点点滴滴!</div>
       `
     )
     const typeOpt: Reactive<Object> = reactive({
@@ -154,12 +161,19 @@ export default defineComponent({
       ta8,
       ta9,
     ])
+    const page4SwiperOpt: Reactive<Object> = reactive({
+      autoplay: true,
+      delay: 3000,
+      speed: 1500,
+    })
     return {
       page,
       typeOpt,
       handleJump,
       handleTypeComplete,
       page4List,
+      page4SwiperOpt,
+      modules: [Pagination, Autoplay],
     }
   },
 })
