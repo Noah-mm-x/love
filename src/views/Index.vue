@@ -37,7 +37,8 @@
                alt="">
         </div>
         <a class="start"
-           href="javascript:;">开心</a>
+           href="javascript:;"
+           @click="handleJump(3)">开心</a>
       </div>
     </transition>
     <!-- 页面三 -->
@@ -52,7 +53,8 @@
                  :onComplete="handleTypeComplete">
       </vue-typed>
       <a class="start"
-         href="javascript:;">好梦</a>
+         href="javascript:;"
+         @click="handleJump(4)">好梦</a>
     </div>
     <!-- 页面四 -->
     <div v-if="page === 4"
@@ -78,7 +80,8 @@
         </swiper-slide>
       </swiper>
       <a class="start"
-         href="javascript:;">爱你</a>
+         href="javascript:;"
+         @click="handleJump(5)">爱你</a>
     </div>
     <div v-if="page === 5"
          class="page-container page5-container">
@@ -120,7 +123,7 @@ export default defineComponent({
   },
   setup: () => {
     // : Ref<Number>
-    const page = ref(5)
+    const page = ref(1)
 
     const page3Txt = ref(
       `
