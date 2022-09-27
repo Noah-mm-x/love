@@ -54,6 +54,7 @@
       <a class="start"
          href="javascript:;">好梦</a>
     </div>
+    <!-- 页面四 -->
     <div v-if="page === 4"
          class="page-container page4-container">
       <vue-typed class="font"
@@ -77,13 +78,26 @@
         </swiper-slide>
       </swiper>
       <a class="start"
-         href="javascript:;">好梦</a>
+         href="javascript:;">爱你</a>
+    </div>
+    <div v-if="page === 5"
+         class="page-container page5-container">
+      <img class="bg"
+           src="@/assets/img/cat/bg.png"
+           alt="">
+      <img class="changge animate__animated animate__bounce animate__infinite"
+           src="@/assets/img/cat/3.png"
+           alt="">
+      <img class="yueliang animate__animated animate__swing animate__infinite"
+           src="@/assets/img/cat/2.png"
+           alt="">
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, Ref, ref, Reactive, reactive } from 'vue'
-import { VueTyped, TypedRef } from 'vue3-typed.js'
+<script>
+import { defineComponent, ref, reactive } from 'vue'
+// import { VueTyped } from '../../node_modules/vue3-typed.js/dist/vue3-typed.js'
+import { VueTyped } from 'vue3-typed.js'
 import { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
@@ -105,9 +119,10 @@ export default defineComponent({
     SwiperSlide,
   },
   setup: () => {
-    const page: Ref<Number> = ref(4)
+    // : Ref<Number>
+    const page = ref(5)
 
-    const page3Txt: Ref<String> = ref(
+    const page3Txt = ref(
       `
       <div>我们之间有太多太多的相似</div>
       <div>都喜欢，旅行，自驾，看书，猫狗，大海。。。</div>
@@ -129,39 +144,29 @@ export default defineComponent({
     //   1111
     //   `
     // )
-    const page4Txt: Ref<String> = ref(
+    const page4Txt = ref(
       `
       <div>我喜欢用照片记录生活~</div>
       <div>更喜欢记录</div>
       <div>和你的点点滴滴!</div>
       `
     )
-    const typeOpt: Reactive<Object> = reactive({
+    const typeOpt = reactive({
       showCursor: false,
       typeSpeed: 200,
       page3Txt: page3Txt.value,
       page4Txt: page4Txt.value,
       fadeOut: true,
     })
-    const handleTypeComplete: Function = () => {
+    const handleTypeComplete = () => {
       console.log(111)
     }
-    const handleJump: Function = (pageParam: Number) => {
+    const handleJump = (pageParam) => {
       console.log(page)
       page.value = pageParam
     }
-    const page4List: Reactive<Array<String>> = reactive([
-      ta1,
-      ta2,
-      ta3,
-      ta4,
-      ta5,
-      ta6,
-      ta7,
-      ta8,
-      ta9,
-    ])
-    const page4SwiperOpt: Reactive<Object> = reactive({
+    const page4List = reactive([ta1, ta2, ta3, ta4, ta5, ta6, ta7, ta8, ta9])
+    const page4SwiperOpt = reactive({
       autoplay: true,
       delay: 3000,
       speed: 1500,
