@@ -85,7 +85,8 @@
     </div>
     <div v-if="page === 5"
          class="page-container page5-container">
-      <img class="bg"
+      <img @click="handleJump(6)"
+           class="bg"
            src="@/assets/img/cat/bg.png"
            alt="">
       <img class="changge animate__animated animate__bounce animate__infinite"
@@ -94,6 +95,74 @@
       <img class="yueliang animate__animated animate__swing animate__infinite"
            src="@/assets/img/cat/2.png"
            alt="">
+      <img class="feixiang animate__animated animate__bounceInRight"
+           src="@/assets/img/cat/6.png"
+           alt="">
+      <img class="daoli animate__animated animate__slideInDown"
+           src="@/assets/img/cat/7.png"
+           alt="">
+      <img class="duzixiao animate__animated animate__tada animate__infinite"
+           src="@/assets/img/cat/9.png"
+           alt="">
+    </div>
+    <div v-if="page === 6"
+         class="page-container page6-container">
+      <div class="content-wrap">
+        <p class="font txt">到这里，也就写完了。</p>
+        <p class="font txt">最后，我想说</p>
+        <p class="font txt">你愿意做我的女朋友吗？</p>
+        <div class="btn-group">
+          <a class="yes animate__animated animate__pulse animate__infinite"
+             href="javascript:;"
+             @click="handleYesShow">愿意</a>
+          <a class="no"
+             href="javascript:;"
+             @click="handleNoShow">拒绝</a>
+        </div>
+      </div>
+      <!-- 拒绝弹窗 -->
+      <div v-if="noStatus"
+           class="popup-wrap">
+        <div class="mask"></div>
+        <div class="content">
+          <img class="img"
+               src="@/assets/img/kelian.jpeg"
+               alt="">
+          <p class="txt">不然你在考虑考虑🤕</p>
+          <a class="btn"
+             href="javascript:;"
+             @click="handleNoHid">好吧(╯▽╰)</a>
+        </div>
+      </div>
+      <!-- 接受弹窗 -->
+      <div v-if="yesStatus"
+           class="popup-wrap">
+        <div class="mask"></div>
+        <div class="content">
+          <img class="img"
+               src="@/assets/img/chaoxiao.jpeg"
+               alt="">
+          <p class="txt">你愿意，但我不愿意哈哈</p>
+          <a class="btn"
+             href="javascript:;"
+             @click="handleYesHid">哼😕</a>
+        </div>
+      </div>
+      <!-- 接受2弹窗 -->
+      <div v-if="yesReStatus"
+           class="popup-wrap">
+        <div class="mask"></div>
+        <div class="content">
+          <img class="img"
+               src="@/assets/img/ai.jpeg"
+               alt="">
+          <p class="txt">不要生气嘛，我怎么可能不愿意</p>
+          <p class="txt">你永远是我最爱的人！</p>
+          <a class="btn"
+             href="javascript:;"
+             @click="handleYesReHid">爱你呦❤️</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -174,6 +243,25 @@ export default defineComponent({
       delay: 3000,
       speed: 1500,
     })
+    const noStatus = ref(false)
+    const yesStatus = ref(false)
+    const yesReStatus = ref(false)
+    const handleNoShow = () => {
+      noStatus.value = true
+    }
+    const handleNoHid = () => {
+      noStatus.value = false
+    }
+    const handleYesShow = () => {
+      yesStatus.value = true
+    }
+    const handleYesHid = () => {
+      yesStatus.value = false
+      yesReStatus.value = true
+    }
+    const handleYesReHid = () => {
+      yesReStatus.value = false
+    }
     return {
       page,
       typeOpt,
@@ -182,6 +270,14 @@ export default defineComponent({
       page4List,
       page4SwiperOpt,
       modules: [Pagination, Autoplay],
+      noStatus,
+      yesStatus,
+      yesReStatus,
+      handleNoShow,
+      handleYesShow,
+      handleNoHid,
+      handleYesHid,
+      handleYesReHid
     }
   },
 })
