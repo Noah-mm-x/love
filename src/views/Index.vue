@@ -89,20 +89,30 @@
            class="bg"
            src="@/assets/img/cat/bg.png"
            alt="">
-      <img class="changge animate__animated animate__bounce animate__infinite"
-           src="@/assets/img/cat/3.png"
-           alt="">
+
       <img class="yueliang animate__animated animate__swing animate__infinite"
            src="@/assets/img/cat/2.png"
            alt="">
-      <img class="feixiang animate__animated animate__bounceInRight"
+      <img class="changge animate__animated animate__bounce animate__infinite"
+           src="@/assets/img/cat/3.png"
+           alt="">
+      <img class="feixiang animate__animated animate__rotateInDownRight animate__infinite"
            src="@/assets/img/cat/6.png"
+           alt="">
+      <img class="kanshu animate__animated animate__zoomInDown animate__infinite"
+           src="@/assets/img/cat/5.png"
            alt="">
       <img class="daoli animate__animated animate__slideInDown"
            src="@/assets/img/cat/7.png"
            alt="">
       <img class="duzixiao animate__animated animate__tada animate__infinite"
            src="@/assets/img/cat/9.png"
+           alt="">
+      <img class="chi animate__animated animate__tada animate__infinite"
+           src="@/assets/img/cat/10.png"
+           alt="">
+      <img class="feilai animate__animated animate__jackInTheBox animate__infinite"
+           src="@/assets/img/cat/12.png"
            alt="">
     </div>
     <div v-if="page === 6"
@@ -192,7 +202,7 @@ export default defineComponent({
   },
   setup: () => {
     // : Ref<Number>
-    const page = ref(1)
+    const page = ref(5)
 
     const page3Txt = ref(
       `
