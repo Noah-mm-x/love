@@ -202,7 +202,7 @@ export default defineComponent({
   },
   setup: () => {
     // : Ref<Number>
-    const page = ref(5)
+    const page = ref(1)
 
     const page3Txt = ref(
       `
